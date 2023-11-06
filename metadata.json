@@ -1,0 +1,1 @@
+{"clusterName":"ocp","clusterID":"6fdd18c3-7a88-4cb2-bd7a-818cdf2bd036","infraID":"ocp-6k8kw","aws":{"region":"us-west-2","identifier":[{"kubernetes.io/cluster/ocp-6k8kw":"owned"},{"openshiftClusterID":"6fdd18c3-7a88-4cb2-bd7a-818cdf2bd036"}],"clusterDomain":"ocp.thedataguru.org"}}

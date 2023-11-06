@@ -1,0 +1,39 @@
+additionalTrustBundlePolicy: Proxyonly
+apiVersion: v1
+baseDomain: thedataguru.org #Update it with your base domain 
+# Update the Proxy details below an uncomment the parameters
+# proxy:
+#   httpProxy: http://<username>:<pswd>@<ip>:<port> 
+#   httpsProxy: https://<username>:<pswd>@<ip>:<port> 
+#   noProxy: ec2.<aws_region>.amazonaws.com,elasticloadbalancing.<aws_region>.amazonaws.com,s3.<aws_region>.amazonaws.com 
+compute:
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  platform: {}
+  replicas: 2
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform: {}
+  replicas: 3
+metadata:
+  creationTimestamp: null
+  name: ocp
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 10.0.0.0/16  #Update it with your vpc cidrblock
+  networkType: OVNKubernetes
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  aws:
+    region: us-west-2
+publish: Internal 
+pullSecret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfZjgwMDA3Y2I5ZDM1NDU1MTg0ZDBlNTZjMzI1ODk5NWY6Nk1XWTNRM1ZPUU81RTRaOE5STzZGS0oxUkpPT0NXSUlGU1BCR0M5VTNKWEVaVTFTUlhRWkVKTE5SSTBUM1lNWQ==","email":"kapil.rajyaguru@ibm.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K29jbV9hY2Nlc3NfZjgwMDA3Y2I5ZDM1NDU1MTg0ZDBlNTZjMzI1ODk5NWY6Nk1XWTNRM1ZPUU81RTRaOE5STzZGS0oxUkpPT0NXSUlGU1BCR0M5VTNKWEVaVTFTUlhRWkVKTE5SSTBUM1lNWQ==","email":"kapil.rajyaguru@ibm.com"},"registry.connect.redhat.com":{"auth":"fHVoYy1wb29sLWNmOWRjMmVhLTdhZjQtNDQ4MS1hOWJkLTE3NzA0ZDE0MjYwNjpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmpaakl3Tm1ZeU5HVTVPVFkwWVRNeVlUZ3pNamhqWXpCaE1EZG1aV00yWkNKOS5HQ3p0d2owUjloRldOaTZiTzd1djFpTnltOHNmV0pYWFhZQ0J3YmRvc0Z3VEhCY0NYWkkyeWQzYS0zOTgxN0wxZGlxRkdPN3RLalZTeWRlcnVSUVdQLU1IYURwZ2EzN2VtYURSVjg5OXJjeW5UWXI3UXFhRTF2UE1UM0lqVWRpNzBmWC1RRTlIUWcwc3dzX2ZmOXoyS096aDN6SjRST3RlMnhrRV9Jd0U0bTlZbVFYYTRWZlNDeFlzdlZQMkNPWkd1Tlp6OWJFNUczMUhGdXZkU3NCTndQZG15ZkZ3Zk1KSjUzYWRoX3g4TVU5Ml9TQVBQLVRDdFNmZjZVdkJUYW9QeWQxOHdYcmhfOWNfWVpFOE5FNjRBTFlHNkF5bWpNSDBkQUhKSVRMU1k1eHlUbmFhbTExNmZ5OFlfOFF5TlRxdGJrZGJiRTQ3ZUZ2RDJFZ2RnNUZicW5YZGwxNUZBaEh1NnZidUp6Z2RwSUFfbXZfVHZNUGwzYk1hZ0V5NkNBbXk3eWltcWFqNGdFV1hLX09oVjhkWm0wa19hdjREeHBYLVJwMjJnY29jQ3ROYVlnS2ptQWt1OU1sVHZFcEpjN005dFd4bFJkYzh4Q1dXSFJoX0pDNzQxY1IyUmluMWxONmNGSktlSHdzMWdicUg0ZFZhc3UwcUEtb2xEa0JyX1B3bEd4MmdzbmptSWd3T1NxSlRLY1NnbVFqTDdiTm85cDk3a1U2elUzalVndERjdV9tWDhpTWp5RXNVd2hvUm9rT1FSLUdfR19mT201eEYzTTU1VzdGSjFEaUM4X0lPaldJOVVvOTdpQlkxNTNZNGRzMElackVjOG1qVFRYNHlQOTZOeDdhQW1BTEFla0h0aEdGTTlCV09qdEtKdEk5d2F1QU9xTktZSkNpZHJfNA==","email":"kapil.rajyaguru@ibm.com"},"registry.redhat.io":{"auth":"fHVoYy1wb29sLWNmOWRjMmVhLTdhZjQtNDQ4MS1hOWJkLTE3NzA0ZDE0MjYwNjpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSmpaakl3Tm1ZeU5HVTVPVFkwWVRNeVlUZ3pNamhqWXpCaE1EZG1aV00yWkNKOS5HQ3p0d2owUjloRldOaTZiTzd1djFpTnltOHNmV0pYWFhZQ0J3YmRvc0Z3VEhCY0NYWkkyeWQzYS0zOTgxN0wxZGlxRkdPN3RLalZTeWRlcnVSUVdQLU1IYURwZ2EzN2VtYURSVjg5OXJjeW5UWXI3UXFhRTF2UE1UM0lqVWRpNzBmWC1RRTlIUWcwc3dzX2ZmOXoyS096aDN6SjRST3RlMnhrRV9Jd0U0bTlZbVFYYTRWZlNDeFlzdlZQMkNPWkd1Tlp6OWJFNUczMUhGdXZkU3NCTndQZG15ZkZ3Zk1KSjUzYWRoX3g4TVU5Ml9TQVBQLVRDdFNmZjZVdkJUYW9QeWQxOHdYcmhfOWNfWVpFOE5FNjRBTFlHNkF5bWpNSDBkQUhKSVRMU1k1eHlUbmFhbTExNmZ5OFlfOFF5TlRxdGJrZGJiRTQ3ZUZ2RDJFZ2RnNUZicW5YZGwxNUZBaEh1NnZidUp6Z2RwSUFfbXZfVHZNUGwzYk1hZ0V5NkNBbXk3eWltcWFqNGdFV1hLX09oVjhkWm0wa19hdjREeHBYLVJwMjJnY29jQ3ROYVlnS2ptQWt1OU1sVHZFcEpjN005dFd4bFJkYzh4Q1dXSFJoX0pDNzQxY1IyUmluMWxONmNGSktlSHdzMWdicUg0ZFZhc3UwcUEtb2xEa0JyX1B3bEd4MmdzbmptSWd3T1NxSlRLY1NnbVFqTDdiTm85cDk3a1U2elUzalVndERjdV9tWDhpTWp5RXNVd2hvUm9rT1FSLUdfR19mT201eEYzTTU1VzdGSjFEaUM4X0lPaldJOVVvOTdpQlkxNTNZNGRzMElackVjOG1qVFRYNHlQOTZOeDdhQW1BTEFla0h0aEdGTTlCV09qdEtKdEk5d2F1QU9xTktZSkNpZHJfNA==","email":"kapil.rajyaguru@ibm.com"}}}'
+sshKey: |
+  ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGqnTwGxSp4/mrWHbXZOG7+OXGjrkXmEr+ODHRSmDR5G root@VM.Kapil-Rajyaguru-s-Account.cloud

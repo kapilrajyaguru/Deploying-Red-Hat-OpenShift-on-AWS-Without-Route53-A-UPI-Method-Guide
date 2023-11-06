@@ -1,0 +1,10 @@
+{
+  "ignition": {
+    "config": {
+      "replace": {
+        "source": "s3://ocp-upi/master.ign"
+      }
+    },
+    "version": "3.1.0"
+  }
+}
