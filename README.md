@@ -1,0 +1,1 @@
+# Deploying-Red-Hat-OpenShift-on-AWS-Without-Route53-A-UPI-Method-Guide
