@@ -1,7 +1,7 @@
 additionalTrustBundlePolicy: Proxyonly
 apiVersion: v1
 baseDomain: #Update it with your base domain 
-# Update the Proxy details below an uncomment the parameters
+# Instead of NAT Gateway if you want to use Proxy for internet connection then update the Proxy details below and uncomment the parameters
 # proxy:
 #   httpProxy: http://<username>:<pswd>@<ip>:<port> 
 #   httpsProxy: https://<username>:<pswd>@<ip>:<port> 
@@ -20,7 +20,7 @@ controlPlane:
   replicas: 3
 metadata:
   creationTimestamp: null
-  name: ocp
+  name: demo #provide your cluster name
 networking:
   clusterNetwork:
   - cidr: 10.128.0.0/14
@@ -32,8 +32,10 @@ networking:
   - 172.30.0.0/16
 platform:
   aws:
-    region: us-west-2
+    region: us-west-2 #Update with AWS region where you want to deploy openshift cluster
 publish: Internal 
-pullSecret: ''
-sshKey: |
+# Update Red Hat Pull secret below
+pullSecret: '<ADD your Red Hat Pull Secret HERE>'
+# update your SSH key below
+sshKey: | <ADD SSH KEY HERE>
   
